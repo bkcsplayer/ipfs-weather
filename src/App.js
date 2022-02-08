@@ -1,11 +1,20 @@
 import React, { useState} from 'react';
+import { ContactForm } from "./components/ContactForm";
+
+
 const api = {
   key: "db2cc6d066a5007d12baa9602b21c09f",
   base: "https://api.openweathermap.org/data/2.5/"
 }
 
 
+
+
+
 function App() {
+
+ 
+   
 
    const [query, setQuery] = useState('');
 
@@ -18,14 +27,13 @@ function App() {
        .then(result => {
          setQuery('');
         setWeather(result);
-        console.log(result);
-      
-      
+        console.log(result); 
       });
      }
    }
 
 
+  
     
    const dateBuilder = (d) => {
      let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -67,10 +75,23 @@ function App() {
            <div className='temp'>
              {Math.round(weather.main.temp)}°C
            </div>
+          
            <div className='weather'>{weather.weather[0].main}</div>
+           <div className='temp'>
+             {weather.wind.speed}
+           </div>
          </div>
          </div>
          ) :('')}
+
+
+       <div>
+       <ContactForm />
+       </div>
+
+       
+
+
        </main>
     </div>
   );
